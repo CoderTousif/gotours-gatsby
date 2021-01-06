@@ -17,6 +17,12 @@ const theme = createMuiTheme({
       default: "#fff",
     },
   },
+  typography: {
+    // body2: {
+    //   fontFamily: "Lato, sans-serif",
+    //   fontWeight: 300,
+    // },
+  },
 })
 
 export default theme

@@ -25,10 +25,11 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
   },
   title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
+    // display: "none",
+    // [theme.breakpoints.up("sm")]: {
+    //   display: "block",
+    // },
+    // color: "#fff",
   },
   search: {
     position: "relative",
@@ -78,6 +79,11 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
+  },
+  navItem: {
+    marginLeft: "1rem",
+    // color: "#fff",
+    // fontWeight: 400,
   },
 }))
 
@@ -192,9 +198,9 @@ export default function PrimarySearchAppBar() {
             to="/"
             noWrap
           >
-            Title
+            Gotours
           </Typography>
-          <div className={classes.search}>
+          {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
             </div>
@@ -206,7 +212,7 @@ export default function PrimarySearchAppBar() {
               }}
               inputProps={{ "aria-label": "search" }}
             />
-          </div>
+          </div> */}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {/* <IconButton aria-label="show 4 new mails" color="inherit">
@@ -226,18 +232,18 @@ export default function PrimarySearchAppBar() {
                   color="textPrimary"
                   component={Link}
                   to="/login"
-                  style={{ marginRight: "1rem" }}
+                  className={classes.navItem}
                 >
-                  Login
+                  Log In
                 </Typography>
                 <Typography
                   variant="body1"
                   color="textPrimary"
                   component={Link}
                   to="/signup"
-                  style={{ marginRight: "1rem" }}
+                  className={classes.navItem}
                 >
-                  Signup
+                  Sign Up
                 </Typography>
               </>
             ) : (
