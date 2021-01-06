@@ -1,15 +1,16 @@
 import React from "react"
 import Container from "@material-ui/core/Container"
 import Typography from "@material-ui/core/Typography"
-import Box from "@material-ui/core/Box"
+// import Box from "@material-ui/core/Box"
 import ProTip from "../components/ProTip"
 import Link from "../components/Link"
-import Copyright from "../components/Copyright"
+// import NavBar from "../components/NavBar"
+import TopLayout from "../components/TopLayout"
 
 export default function Index() {
   return (
-    <Container maxWidth="sm">
-      <Box my={4}>
+    <TopLayout>
+      <Container>
         <Typography variant="h4" component="h1" gutterBottom>
           Gatsby v4-beta example
         </Typography>
@@ -17,8 +18,7 @@ export default function Index() {
           Go to the about page
         </Link>
         <ProTip />
-        <Copyright />
-      </Box>
-    </Container>
+      </Container>
+    </TopLayout>
   )
 }
