@@ -17,6 +17,7 @@ import { useForm } from "react-hook-form"
 import Link from "../components/Link"
 // import UserProvider from "../contexts/UserProvider"
 // import { LOGIN_INPUT } from "../graphql/graphql"
+import TopLayout from "../components/TopLayout"
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -73,82 +74,84 @@ export default function Login(props) {
   //   if (loading) return <Loading />
 
   return (
-    <Container component="main" maxWidth="xs">
-      {/* <Notification message={errMsg} /> */}
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
+    <TopLayout>
+      <Container component="main" maxWidth="xs">
+        {/* <Notification message={errMsg} /> */}
+        <div className={classes.paper}>
+          <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
 
-        <Typography component="h1" variant="h5">
-          Log In
-        </Typography>
+          <Typography component="h1" variant="h5">
+            Log In
+          </Typography>
 
-        {/* <div style={{ marginTop: "1em" }}>
+          {/* <div style={{ marginTop: "1em" }}>
                     <Facebook setLoginRes={setLoginRes} />
                 </div> */}
 
-        <form className={classes.form} onSubmit={onSubmit} noValidate>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
-            inputRef={register({
-              required: true,
-              pattern: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/i,
-            })}
-            error={errors.email && true}
-            helperText={errors.email && "A valid email is required"}
-          />
+          <form className={classes.form} onSubmit={onSubmit} noValidate>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              inputRef={register({
+                required: true,
+                pattern: /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/i,
+              })}
+              error={errors.email && true}
+              helperText={errors.email && "A valid email is required"}
+            />
 
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            inputRef={register({
-              required: true,
-              minLength: 10,
-              maxLength: 40,
-            })}
-            error={errors.password && true}
-            helperText={
-              errors.password && "Password must be minimum twelve characters"
-            }
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Log In
-          </Button>
-        </form>
-        <Grid container>
-          <Grid item xs>
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              inputRef={register({
+                required: true,
+                minLength: 10,
+                maxLength: 40,
+              })}
+              error={errors.password && true}
+              helperText={
+                errors.password && "Password must be minimum twelve characters"
+              }
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Log In
+            </Button>
+          </form>
+          <Grid container>
+            <Grid item xs>
+              <Link href="#" variant="body2">
+                Forgot password?
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link variant="body2" to="/signup">
+                {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
           </Grid>
-          <Grid item>
-            <Link variant="body2" to="/signup">
-              {"Don't have an account? Sign Up"}
-            </Link>
-          </Grid>
-        </Grid>
-      </div>
-    </Container>
+        </div>
+      </Container>
+    </TopLayout>
   )
 }

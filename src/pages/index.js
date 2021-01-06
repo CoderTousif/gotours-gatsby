@@ -6,13 +6,15 @@ import ProTip from "../components/ProTip"
 import Link from "../components/Link"
 // import NavBar from "../components/NavBar"
 import TopLayout from "../components/TopLayout"
+import SEO from "../components/seo"
 
 export default function Index() {
   return (
     <TopLayout>
+      <SEO title="Home" />
       <Container>
         <Typography variant="h4" component="h1" gutterBottom>
-          Gatsby v4-beta example
+          Gatsby template
         </Typography>
         <Link to="/about" color="secondary">
           Go to the about page

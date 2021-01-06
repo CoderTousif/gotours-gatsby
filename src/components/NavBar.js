@@ -1,9 +1,9 @@
 import React from "react"
 import { fade, makeStyles } from "@material-ui/core/styles"
-import AppBar from "@material-ui/core/AppBar"
+import { AppBar, Typography } from "@material-ui/core"
 import Toolbar from "@material-ui/core/Toolbar"
 import IconButton from "@material-ui/core/IconButton"
-import Typography from "@material-ui/core/Typography"
+// import Typography from "@material-ui/core/Typography"
 import InputBase from "@material-ui/core/InputBase"
 import Badge from "@material-ui/core/Badge"
 import MenuItem from "@material-ui/core/MenuItem"
@@ -14,6 +14,8 @@ import AccountCircle from "@material-ui/icons/AccountCircle"
 import MailIcon from "@material-ui/icons/Mail"
 import NotificationsIcon from "@material-ui/icons/Notifications"
 import MoreIcon from "@material-ui/icons/MoreVert"
+import Link from "./Link"
+import UserProvider from "../contexts/UserProvider"
 
 const useStyles = makeStyles(theme => ({
   grow: {
@@ -83,7 +85,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null)
-
+  const userCtx = React.useContext(UserProvider.context)
   const isMenuOpen = Boolean(anchorEl)
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl)
 
@@ -173,8 +175,24 @@ export default function PrimarySearchAppBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography className={classes.title} variant="h6" noWrap>
-            Gotours
+          {/* <Button
+            className={classes.title}
+            disableRipple
+            component={Link}
+            to="/"
+            // onClick={() => setValue(0)}
+          >
+            Title
+          </Button> */}
+          <Typography
+            variant="h6"
+            className={classes.title}
+            color="textPrimary"
+            component={Link}
+            to="/"
+            noWrap
+          >
+            Title
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -201,22 +219,39 @@ export default function PrimarySearchAppBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton> */}
-            {/* <Button variant="text" color="default">
-              Login
-            </Button>
-            <Button variant="text" color="default">
-              Signup
-            </Button> */}
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {!userCtx.user ? (
+              <>
+                <Typography
+                  variant="body1"
+                  color="textPrimary"
+                  component={Link}
+                  to="/login"
+                  style={{ marginRight: "1rem" }}
+                >
+                  Login
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="textPrimary"
+                  component={Link}
+                  to="/signup"
+                  style={{ marginRight: "1rem" }}
+                >
+                  Signup
+                </Typography>
+              </>
+            ) : (
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton
